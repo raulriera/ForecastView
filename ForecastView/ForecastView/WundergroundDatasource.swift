@@ -27,14 +27,17 @@ public class WundergroundDatasource: ForecastDatasource {
         if let resourceURL = resourceURL {
             loadDataFromURL(resourceURL) { (data, error) in
                 
-                if let error = error {
-                    completion(data: .None, error: error)
-                }
-                
                 var parseError: NSError?
                 let parsedObject: AnyObject? = NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments, error:&parseError)
                 
                 var json: AnyObject? = parsedObject!.objectForKey("forecast")
+                
+                if json == nil {
+                    let error = NSError(domain: "com.raulriera.forecastView", code: 500, userInfo: ["error" : "API JSON response error"])
+                    completion(data: .None, error: error)
+                    return
+                }
+                
                 json = json!["simpleforecast"]
                 json = json!["forecastday"]
                 
