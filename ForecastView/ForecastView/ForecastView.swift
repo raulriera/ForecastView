@@ -69,7 +69,7 @@ public class ForecastView: UIView {
         configureViews()
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         configureViews()
     }
@@ -117,7 +117,7 @@ public class ForecastView: UIView {
         collectionView.backgroundColor = .clearColor()
         collectionView.showsHorizontalScrollIndicator = false
         
-        collectionView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(collectionView)
         
@@ -139,7 +139,7 @@ public class ForecastView: UIView {
         debugLabel.numberOfLines = 0
         debugLabel.lineBreakMode = .ByWordWrapping
         debugLabel.textAlignment = .Center
-        debugLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        debugLabel.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(debugLabel)
         
@@ -147,8 +147,8 @@ public class ForecastView: UIView {
         
         let views = ["label": debugLabel]
         
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[label]-|", options: .allZeros, metrics: nil, views: views)
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[label]-|", options: .allZeros, metrics: nil, views: views)
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[label]-|", options: [], metrics: nil, views: views)
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[label]-|", options: [], metrics: nil, views: views)
         
         NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
     }

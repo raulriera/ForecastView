@@ -23,7 +23,7 @@ class ForecastCollectionViewCell: UICollectionViewCell, ForecastViewDisplayable 
     }
     
     internal func configureSubviews() {
-        if let conditionsView = conditionsView {
+        if let _ = conditionsView {
             return
         }
         
@@ -32,20 +32,20 @@ class ForecastCollectionViewCell: UICollectionViewCell, ForecastViewDisplayable 
         dayLabel?.font = .systemFontOfSize(12)
         dayLabel?.textColor = .whiteColor()
         dayLabel?.textAlignment = .Center
-        dayLabel?.setTranslatesAutoresizingMaskIntoConstraints(false)
+        dayLabel?.translatesAutoresizingMaskIntoConstraints = false
         
         contentView.addSubview(dayLabel!)
         
         conditionsView = ConditionsView(frame: frame, font: UIFont.systemFontOfSize(20, weight:UIFontWeightThin))
-        conditionsView?.setTranslatesAutoresizingMaskIntoConstraints(false)
+        conditionsView?.translatesAutoresizingMaskIntoConstraints = false
         
         contentView.addSubview(conditionsView!)
         
         let views = ["dayLabel": dayLabel!, "conditionsView": conditionsView!]
         
-        let horizontalConstraintsConditionsView = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[conditionsView]-0-|", options: .allZeros, metrics: nil, views: views)
-        let horizontalConstraintsDayLabel = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[dayLabel]-0-|", options: .allZeros, metrics: nil, views: views)
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[dayLabel]-0-[conditionsView]-0-|", options: .allZeros, metrics: nil, views: views)
+        let horizontalConstraintsConditionsView = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[conditionsView]-0-|", options: [], metrics: nil, views: views)
+        let horizontalConstraintsDayLabel = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[dayLabel]-0-|", options: [], metrics: nil, views: views)
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[dayLabel]-0-[conditionsView]-0-|", options: [], metrics: nil, views: views)
         
         NSLayoutConstraint.activateConstraints(horizontalConstraintsConditionsView + horizontalConstraintsDayLabel + verticalConstraints)
     }

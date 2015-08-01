@@ -22,18 +22,18 @@ class SimpleForecastCollectionViewCell: UICollectionViewCell, ForecastViewDispla
     }
     
     internal func configureSubviews() {
-        if let conditionsView = conditionsView {
+        if let _ = conditionsView {
             return
         }
         
         conditionsView = ConditionsView(frame: frame, font: UIFont.systemFontOfSize(32, weight: UIFontWeightThin))
-        conditionsView?.setTranslatesAutoresizingMaskIntoConstraints(false)
+        conditionsView?.translatesAutoresizingMaskIntoConstraints = false
         
         contentView.addSubview(conditionsView!)
         
         let views = ["conditionsView": conditionsView!]
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[conditionsView]-0-|", options: .allZeros, metrics: nil, views: views)
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[conditionsView]-0-|", options: .allZeros, metrics: nil, views: views)
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[conditionsView]-0-|", options: [], metrics: nil, views: views)
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[conditionsView]-0-|", options: [], metrics: nil, views: views)
         
         NSLayoutConstraint.activateConstraints(verticalConstraints + horizontalConstraints)
     }

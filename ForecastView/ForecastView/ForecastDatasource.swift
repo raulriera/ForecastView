@@ -16,8 +16,8 @@ public protocol ForecastDatasource {
     /**
     Asks the data source for the items in the specified coordinates. (required)
     
-    :param: coordinates location coordinates for the weather conditions
-    :param: completion  handler after container either the array of Forecast elements or an error
+    - parameter coordinates: location coordinates for the weather conditions
+    - parameter completion:  handler after container either the array of Forecast elements or an error
     */
     func forecastForCoordinates(coordinates: CLLocationCoordinate2D, completion:(data: [Forecast]?, error: NSError?) -> Void)
 }
