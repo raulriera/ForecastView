@@ -9,11 +9,27 @@
 import Foundation
 
 public struct Temperature {
-    public let celsius: Int
-    public let fahrenheit: Int
+    let celsius: Int
+    let fahrenheit: Int
+    let format: TemperatureFormat
     
-    init(celsius: Int, fahrenheit: Int) {
+    public var value: Int {
+        switch format {
+        case .Celsius:
+            return celsius
+        case .Fahrenheit:
+            return fahrenheit
+        }
+    }
+    
+    public enum TemperatureFormat {
+        case Celsius
+        case Fahrenheit
+    }
+    
+    init(celsius: Int, fahrenheit: Int, format: TemperatureFormat = .Celsius) {
         self.celsius = celsius
         self.fahrenheit = fahrenheit
+        self.format = format
     }
 }
