@@ -34,7 +34,7 @@ class ConditionsView: UIView {
         conditionsImageView = UIImageView(frame: frame)
         
         if let conditionsLabel = conditionsLabel, let conditionsImageView = conditionsImageView {
-            self.backgroundColor = .clearColor()
+            backgroundColor = .clearColor()
             
             conditionsLabel.font = font
             conditionsLabel.textColor = .whiteColor()
@@ -60,7 +60,7 @@ class ConditionsView: UIView {
     
     private func didUpdateForecast() {
         if let forecast = forecast, let conditionsLabel = conditionsLabel, let conditionsImageView = conditionsImageView {
-            conditionsLabel.text = "\(forecast.high.celsius)˚"
+            conditionsLabel.text = "\(forecast.high.value)˚"
             conditionsImageView.image = UIImage(named: forecast.conditions.icon)
         }
     }

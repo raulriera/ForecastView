@@ -48,7 +48,7 @@ public class ForecastView: UIView {
         case Collapsed
         case Expanded
     }
-    
+        
     private func numberOfDays() -> Int {
         if items.isEmpty {
             return 0
@@ -100,10 +100,10 @@ public class ForecastView: UIView {
         collectionView.reloadData()
         collectionView.layoutIfNeeded()
         
-        UIView.animateWithDuration(duration) {
+        UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.6, options: .BeginFromCurrentState, animations: {
             self.invalidateIntrinsicContentSize()
             self.superview?.layoutIfNeeded()
-        }
+        }, completion: nil)
     }
     
     private func configureViews() {
