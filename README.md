@@ -26,11 +26,13 @@ class ViewController: UIViewController {
 }
 ```
 
-Be sure to check out the wonderful icons in the `Example` project, the library will try to find any icons matching the file name convention as http://www.wunderground.com/weather/api/d/docs?d=resources/icon-sets
+A beautiful icon set created by [Carlos Yllobre](http://twitter.com/charlieyllobre) is bundled with the `Example` project.
 
 ## Extending
 
 If you wish to use other datasources, just create a class that implements the [ForecastDatasource](ForecastView/ForecastView/ForecastDatasource.swift) protocol. It's that easy.
+
+Want to use your own icons? Supply the icon filename in the [Conditions](ForecastView/ForecastView/Conditions.swift) model. Checkout the [ConditionsView](ForecastView/ForecastView/ConditionsView.swift) for more information about this.
 
 ## Installation
 
