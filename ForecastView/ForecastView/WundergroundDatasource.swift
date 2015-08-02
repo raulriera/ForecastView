@@ -33,8 +33,7 @@ public class WundergroundDatasource: ForecastDatasource {
                     var json: AnyObject? = parsedObject.objectForKey("forecast")
                     
                     if json == nil {
-                        let error = NSError(domain: "com.raulriera.forecastView", code: 500, userInfo: ["error" : "API JSON response error"])
-                        completion(data: .None, error: error)
+                        completion(data: .None, error: NSError(.InvalidJSON))
                         return
                     }
                     
@@ -74,21 +73,9 @@ public class WundergroundDatasource: ForecastDatasource {
                 }
                 
             }
+        } else {
+            completion(data: .None, error: NSError(.InvalidURL))
         }
         
-    }
-}
-
-extension WundergroundDatasource {
-    private func loadDataFromURL(url: NSURL, completion:(data: NSData?, error: NSError?) -> Void) {        
-        let loadDataTask = NSURLSession.sharedSession().dataTaskWithURL(url) { (data: NSData?, response: NSURLResponse?, error: NSError?) in
-            if let responseError = error {
-                completion(data: nil, error: responseError)
-            } else {
-                completion(data: data, error: nil)
-            }
-        }
-        
-        loadDataTask.resume()
     }
 }

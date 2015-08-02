@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C77C3C01B6E58B200F4506F /* NSErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C77C3BF1B6E58B200F4506F /* NSErrorExtensions.swift */; };
 		4CBA8F531B6AA23F00B4748F /* ForecastView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CDABFDF1B6A9EE300FABA32 /* ForecastView.framework */; };
 		4CBA8F541B6AA23F00B4748F /* ForecastView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CDABFDF1B6A9EE300FABA32 /* ForecastView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4CDABFE51B6A9EE300FABA32 /* ForecastView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CDABFE41B6A9EE300FABA32 /* ForecastView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -53,6 +54,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4C77C3BF1B6E58B200F4506F /* NSErrorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSErrorExtensions.swift; sourceTree = "<group>"; };
 		4CDABFDF1B6A9EE300FABA32 /* ForecastView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ForecastView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CDABFE31B6A9EE300FABA32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CDABFE41B6A9EE300FABA32 /* ForecastView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForecastView.h; sourceTree = "<group>"; };
@@ -95,6 +97,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C77C3BE1B6E58A400F4506F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4C77C3BF1B6E58B200F4506F /* NSErrorExtensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		4CDABFD51B6A9EE300FABA32 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +126,7 @@
 		4CDABFE11B6A9EE300FABA32 /* ForecastView */ = {
 			isa = PBXGroup;
 			children = (
+				4C77C3BE1B6E58A400F4506F /* Extensions */,
 				4CDAC0161B6A9FB300FABA32 /* Datasources */,
 				4CDAC0151B6A9F8500FABA32 /* Views */,
 				4CDAC0141B6A9F7400FABA32 /* Protocols */,
@@ -309,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CDAC0091B6A9F6100FABA32 /* ConditionsView.swift in Sources */,
+				4C77C3C01B6E58B200F4506F /* NSErrorExtensions.swift in Sources */,
 				4CDAC00A1B6A9F6100FABA32 /* Forecast.swift in Sources */,
 				4CDAC00B1B6A9F6100FABA32 /* ForecastCollectionViewCell.swift in Sources */,
 				4CDAC0101B6A9F6100FABA32 /* SimpleForecastCollectionViewCell.swift in Sources */,
