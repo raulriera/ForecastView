@@ -100,9 +100,9 @@ public class ForecastView: UIView {
         collectionView.reloadData()
         collectionView.layoutIfNeeded()
         
-        UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.6, options: .BeginFromCurrentState, animations: {
-            self.invalidateIntrinsicContentSize()
-            self.superview?.layoutIfNeeded()
+        UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.6, options: .BeginFromCurrentState, animations: { [weak self] in
+            self?.invalidateIntrinsicContentSize()
+            self?.superview?.layoutIfNeeded()
         }, completion: nil)
     }
     

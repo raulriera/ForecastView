@@ -21,6 +21,16 @@ class ConditionsView: UIView {
     
     // MARK: Initializers
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        configureView(font: .systemFontOfSize(UIFont.systemFontSize()))
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configureView(font: .systemFontOfSize(UIFont.systemFontSize()))
+    }
+    
     convenience init(frame: CGRect, font: UIFont) {
         self.init(frame: frame)
         configureView(font: font)
