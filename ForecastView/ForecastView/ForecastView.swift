@@ -14,7 +14,20 @@ public class ForecastView: UIView {
     
     private var collectionView: UICollectionView!
     private let layout = UICollectionViewFlowLayout()
-    private var state: ForecastViewState = .Collapsed
+    private var state: ForecastViewState = .Collapsed {
+        didSet {
+            guard expandable else { return }
+            guard let collectionView = collectionView else { return }
+            
+            collectionView.reloadData()
+            collectionView.layoutIfNeeded()
+            
+            UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.6, options: .BeginFromCurrentState, animations: { [weak self] in
+                self?.invalidateIntrinsicContentSize()
+                self?.superview?.layoutIfNeeded()
+                }, completion: nil)
+        }
+    }
     private var items = [Forecast]() {
         didSet {
             NSOperationQueue.mainQueue().addOperationWithBlock {
@@ -47,6 +60,14 @@ public class ForecastView: UIView {
     private enum ForecastViewState {
         case Collapsed
         case Expanded
+        
+        mutating func toggle() {
+            if self == .Collapsed {
+                self = .Expanded
+            } else {
+                self = .Collapsed
+            }
+        }
     }
         
     private func numberOfDays() -> Int {
@@ -85,26 +106,6 @@ public class ForecastView: UIView {
     }
     
     // MARK: Private
-    
-    private func toggleLayout() {
-        if !expandable {
-            return
-        }
-        
-        if state == .Collapsed {
-            state = .Expanded
-        } else {
-            state = .Collapsed
-        }
-        
-        collectionView.reloadData()
-        collectionView.layoutIfNeeded()
-        
-        UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.6, options: .BeginFromCurrentState, animations: { [weak self] in
-            self?.invalidateIntrinsicContentSize()
-            self?.superview?.layoutIfNeeded()
-        }, completion: nil)
-    }
     
     private func configureViews() {
         layout.scrollDirection = .Horizontal
@@ -182,7 +183,7 @@ extension ForecastView: UICollectionViewDataSource {
 extension ForecastView: UICollectionViewDelegateFlowLayout {
     
     public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        toggleLayout()
+        state.toggle()
     }
     
 }
