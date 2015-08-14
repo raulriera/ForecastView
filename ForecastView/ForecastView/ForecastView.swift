@@ -9,8 +9,7 @@
 import UIKit
 import CoreLocation
 
-@IBDesignable
-public class ForecastView: UIView {
+@IBDesignable public class ForecastView: UIView {
     
     private var collectionView: UICollectionView!
     private let layout = UICollectionViewFlowLayout()
@@ -37,11 +36,9 @@ public class ForecastView: UIView {
     }
     
     /// Duration in seconds of the expanding and collapsing animation
-    @IBInspectable
-    public var duration: Double = 0.25
+    @IBInspectable public var duration: Double = 0.25
     /// Support to expand the Forecast View to display more than one weather conditions
-    @IBInspectable
-    public var expandable: Bool = true
+    @IBInspectable public var expandable: Bool = true
     /// An object that adopts the ForecastDatasource protocol is responsible for providing the data required by a forecast view.
     public var datasource: ForecastDatasource?
     /// The ForecastViewDelegate protocol defines methods that allow you to manage the selection of items in a forecast view and to perform actions on those items.
