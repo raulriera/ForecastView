@@ -15,37 +15,37 @@ class ForecastCollectionViewCell: UICollectionViewCell, ForecastViewDisplayable 
             didUpdateForecast()
         }
     }
-    private var dayLabel: UILabel?
-    private var conditionsView: ConditionsView?
+    
+    lazy private var dayLabel: UILabel = {
+        let label = UILabel(frame: CGRectZero)
+        
+        label.font = .systemFontOfSize(12)
+        label.textColor = .whiteColor()
+        label.textAlignment = .Center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    lazy private var conditionsView: ConditionsView = {
+        let view = ConditionsView(frame: CGRectZero, font: .systemFontOfSize(20, weight: UIFontWeightThin))
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     static var identifier: String {
         return "ForecastCollectionViewCell"
     }
     
     internal func configureSubviews() {
-        if let conditionsView = conditionsView {
-            return
-        }
+        contentView.addSubview(dayLabel)
+        contentView.addSubview(conditionsView)
         
-        dayLabel = UILabel(frame: frame)
+        let views = ["dayLabel": dayLabel, "conditionsView": conditionsView]
         
-        dayLabel?.font = .systemFontOfSize(12)
-        dayLabel?.textColor = .whiteColor()
-        dayLabel?.textAlignment = .Center
-        dayLabel?.setTranslatesAutoresizingMaskIntoConstraints(false)
-        
-        contentView.addSubview(dayLabel!)
-        
-        conditionsView = ConditionsView(frame: frame, font: UIFont.systemFontOfSize(20, weight:UIFontWeightThin))
-        conditionsView?.setTranslatesAutoresizingMaskIntoConstraints(false)
-        
-        contentView.addSubview(conditionsView!)
-        
-        let views = ["dayLabel": dayLabel!, "conditionsView": conditionsView!]
-        
-        let horizontalConstraintsConditionsView = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[conditionsView]-0-|", options: .allZeros, metrics: nil, views: views)
-        let horizontalConstraintsDayLabel = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[dayLabel]-0-|", options: .allZeros, metrics: nil, views: views)
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[dayLabel]-0-[conditionsView]-0-|", options: .allZeros, metrics: nil, views: views)
+        let horizontalConstraintsConditionsView = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[conditionsView]-0-|", options: [], metrics: nil, views: views)
+        let horizontalConstraintsDayLabel = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[dayLabel]-0-|", options: [], metrics: nil, views: views)
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[dayLabel]-0-[conditionsView]-0-|", options: [], metrics: nil, views: views)
         
         NSLayoutConstraint.activateConstraints(horizontalConstraintsConditionsView + horizontalConstraintsDayLabel + verticalConstraints)
     }
@@ -53,7 +53,7 @@ class ForecastCollectionViewCell: UICollectionViewCell, ForecastViewDisplayable 
     internal func didUpdateForecast() {
         configureSubviews()
         
-        if let forecast = forecast, let dayLabel = dayLabel, let conditionsView = conditionsView {
+        if let forecast = forecast {
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "EEE"
             dayLabel.text = dateFormatter.stringFromDate(forecast.date)

@@ -15,10 +15,10 @@ public protocol ForecastViewDelegate {
     /**
     Asks the delegate for the size of the specified item
     
-    :param: forecastView the view displaying the weather information
-    :param: index        the index of the conditions
+    - parameter forecastView: the view displaying the weather information
+    - parameter index:        the index of the conditions
     
-    :returns: The width and height of the specified item.
+    - returns: The width and height of the specified item.
     */
     func forecastView(forecastView: ForecastView, sizeForItemAtIndex index: Int) -> CGSize
 }

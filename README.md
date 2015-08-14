@@ -56,6 +56,9 @@ Add the following to your Cartfile:
 ``` ruby
 github "raulriera/ForecastView"
 ```
+### Swift 1.2
+
+Looking for a Swift 1.2 version? Try the `swift-1.2` [branch](https://github.com/raulriera/ForecastView/tree/swift-2.0).
 
 ## Created by
 Raul Riera, [@raulriera](http://twitter.com/raulriera)  

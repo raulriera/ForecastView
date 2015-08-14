@@ -9,12 +9,24 @@
 import UIKit
 import CoreLocation
 
-@IBDesignable
-public class ForecastView: UIView {
+@IBDesignable public class ForecastView: UIView {
     
     private var collectionView: UICollectionView!
     private let layout = UICollectionViewFlowLayout()
-    private var state: ForecastViewState = .Collapsed
+    private var state: ForecastViewState = .Collapsed {
+        didSet {
+            guard expandable else { return }
+            guard let collectionView = collectionView else { return }
+            
+            collectionView.reloadData()
+            collectionView.layoutIfNeeded()
+            
+            UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.6, options: .BeginFromCurrentState, animations: { [weak self] in
+                self?.invalidateIntrinsicContentSize()
+                self?.superview?.layoutIfNeeded()
+                }, completion: nil)
+        }
+    }
     private var items = [Forecast]() {
         didSet {
             NSOperationQueue.mainQueue().addOperationWithBlock {
@@ -24,11 +36,9 @@ public class ForecastView: UIView {
     }
     
     /// Duration in seconds of the expanding and collapsing animation
-    @IBInspectable
-    public var duration: Double = 0.25
+    @IBInspectable public var duration: Double = 0.25
     /// Support to expand the Forecast View to display more than one weather conditions
-    @IBInspectable
-    public var expandable: Bool = true
+    @IBInspectable public var expandable: Bool = true
     /// An object that adopts the ForecastDatasource protocol is responsible for providing the data required by a forecast view.
     public var datasource: ForecastDatasource?
     /// The ForecastViewDelegate protocol defines methods that allow you to manage the selection of items in a forecast view and to perform actions on those items.
@@ -47,6 +57,14 @@ public class ForecastView: UIView {
     private enum ForecastViewState {
         case Collapsed
         case Expanded
+        
+        mutating func toggle() {
+            if self == .Collapsed {
+                self = .Expanded
+            } else {
+                self = .Collapsed
+            }
+        }
     }
         
     private func numberOfDays() -> Int {
@@ -69,7 +87,7 @@ public class ForecastView: UIView {
         configureViews()
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         configureViews()
     }
@@ -86,26 +104,6 @@ public class ForecastView: UIView {
     
     // MARK: Private
     
-    private func toggleLayout() {
-        if !expandable {
-            return
-        }
-        
-        if state == .Collapsed {
-            state = .Expanded
-        } else {
-            state = .Collapsed
-        }
-        
-        collectionView.reloadData()
-        collectionView.layoutIfNeeded()
-        
-        UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.6, options: .BeginFromCurrentState, animations: {
-            self.invalidateIntrinsicContentSize()
-            self.superview?.layoutIfNeeded()
-        }, completion: nil)
-    }
-    
     private func configureViews() {
         layout.scrollDirection = .Horizontal
         
@@ -117,7 +115,7 @@ public class ForecastView: UIView {
         collectionView.backgroundColor = .clearColor()
         collectionView.showsHorizontalScrollIndicator = false
         
-        collectionView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(collectionView)
         
@@ -139,7 +137,7 @@ public class ForecastView: UIView {
         debugLabel.numberOfLines = 0
         debugLabel.lineBreakMode = .ByWordWrapping
         debugLabel.textAlignment = .Center
-        debugLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        debugLabel.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(debugLabel)
         
@@ -147,8 +145,8 @@ public class ForecastView: UIView {
         
         let views = ["label": debugLabel]
         
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[label]-|", options: .allZeros, metrics: nil, views: views)
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[label]-|", options: .allZeros, metrics: nil, views: views)
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[label]-|", options: [], metrics: nil, views: views)
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[label]-|", options: [], metrics: nil, views: views)
         
         NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraints)
     }
@@ -182,7 +180,7 @@ extension ForecastView: UICollectionViewDataSource {
 extension ForecastView: UICollectionViewDelegateFlowLayout {
     
     public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        toggleLayout()
+        state.toggle()
     }
     
 }

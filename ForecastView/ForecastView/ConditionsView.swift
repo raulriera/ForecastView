@@ -21,6 +21,16 @@ class ConditionsView: UIView {
     
     // MARK: Initializers
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        configureView(font: .systemFontOfSize(UIFont.systemFontSize()))
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configureView(font: .systemFontOfSize(UIFont.systemFontSize()))
+    }
+    
     convenience init(frame: CGRect, font: UIFont) {
         self.init(frame: frame)
         configureView(font: font)
@@ -28,7 +38,7 @@ class ConditionsView: UIView {
     
     // MARK: Private
     
-    private func configureView(#font: UIFont) {
+    private func configureView(font font: UIFont) {
         
         conditionsLabel = UILabel(frame: frame)
         conditionsImageView = UIImageView(frame: frame)
@@ -39,9 +49,9 @@ class ConditionsView: UIView {
             conditionsLabel.font = font
             conditionsLabel.textColor = .whiteColor()
             conditionsLabel.lineBreakMode = .ByClipping
-            conditionsLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+            conditionsLabel.translatesAutoresizingMaskIntoConstraints = false
             
-            conditionsImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
+            conditionsImageView.translatesAutoresizingMaskIntoConstraints = false
             conditionsImageView.contentMode = .ScaleAspectFit
             
             addSubview(conditionsImageView)
@@ -49,9 +59,9 @@ class ConditionsView: UIView {
             
             let views = ["label": conditionsLabel, "image": conditionsImageView]
             
-            let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[image]-4-[label]-|", options: .allZeros, metrics: nil, views: views)
-            let verticalConstraintsImage = NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[image]-0-|", options: .allZeros, metrics: nil, views: views)
-            let verticalConstraintsLabel = NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[label]-0-|", options: .allZeros, metrics: nil, views: views)
+            let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[image]-4-[label]-|", options: [], metrics: nil, views: views)
+            let verticalConstraintsImage = NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[image]-0-|", options: [], metrics: nil, views: views)
+            let verticalConstraintsLabel = NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[label]-0-|", options: [], metrics: nil, views: views)
             
             NSLayoutConstraint.activateConstraints(horizontalConstraints + verticalConstraintsImage + verticalConstraintsLabel)
             

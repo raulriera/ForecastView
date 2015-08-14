@@ -16,8 +16,30 @@ public protocol ForecastDatasource {
     /**
     Asks the data source for the items in the specified coordinates. (required)
     
-    :param: coordinates location coordinates for the weather conditions
-    :param: completion  handler after container either the array of Forecast elements or an error
+    - parameter coordinates: location coordinates for the weather conditions
+    - parameter completion:  handler contains either the array of Forecast elements or an error
     */
     func forecastForCoordinates(coordinates: CLLocationCoordinate2D, completion:(data: [Forecast]?, error: NSError?) -> Void)
+}
+
+extension ForecastDatasource {
+    
+    /**
+    Helper method to fetch data asynchronously. Creates an HTTP GET request for the specified URL, then calls a handler upon completion.
+    
+    - parameter url: endpoint to fetch the data from
+    - parameter completion:  handler contains either the data or an error
+    */
+    public func loadDataFromURL(url: NSURL, completion:(data: NSData?, error: NSError?) -> Void) {
+        let loadDataTask = NSURLSession.sharedSession().dataTaskWithURL(url) { (data: NSData?, response: NSURLResponse?, error: NSError?) in
+            if let responseError = error {
+                completion(data: nil, error: responseError)
+            } else {
+                completion(data: data, error: nil)
+            }
+        }
+        
+        loadDataTask.resume()
+    }
+
 }
