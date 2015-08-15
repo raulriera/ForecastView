@@ -15,13 +15,13 @@
 		4CDAC0091B6A9F6100FABA32 /* ConditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDABFFE1B6A9F6100FABA32 /* ConditionsView.swift */; };
 		4CDAC00A1B6A9F6100FABA32 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDABFFF1B6A9F6100FABA32 /* Forecast.swift */; };
 		4CDAC00B1B6A9F6100FABA32 /* ForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC0001B6A9F6100FABA32 /* ForecastCollectionViewCell.swift */; };
-		4CDAC00C1B6A9F6100FABA32 /* ForecastDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC0011B6A9F6100FABA32 /* ForecastDatasource.swift */; };
+		4CDAC00C1B6A9F6100FABA32 /* ForecastDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC0011B6A9F6100FABA32 /* ForecastDataSource.swift */; };
 		4CDAC00D1B6A9F6100FABA32 /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC0021B6A9F6100FABA32 /* ForecastView.swift */; };
 		4CDAC00E1B6A9F6100FABA32 /* ForecastViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC0031B6A9F6100FABA32 /* ForecastViewDelegate.swift */; };
 		4CDAC00F1B6A9F6100FABA32 /* ForecastViewDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC0041B6A9F6100FABA32 /* ForecastViewDisplayable.swift */; };
 		4CDAC0101B6A9F6100FABA32 /* SimpleForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC0051B6A9F6100FABA32 /* SimpleForecastCollectionViewCell.swift */; };
 		4CDAC0111B6A9F6100FABA32 /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC0061B6A9F6100FABA32 /* Temperature.swift */; };
-		4CDAC0121B6A9F6100FABA32 /* WundergroundDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC0071B6A9F6100FABA32 /* WundergroundDatasource.swift */; };
+		4CDAC0121B6A9F6100FABA32 /* WundergroundDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC0071B6A9F6100FABA32 /* WundergroundDataSource.swift */; };
 		4CDAC0201B6AA07800FABA32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC01F1B6AA07800FABA32 /* AppDelegate.swift */; };
 		4CDAC0221B6AA07800FABA32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC0211B6AA07800FABA32 /* ViewController.swift */; };
 		4CDAC0251B6AA07800FABA32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CDAC0231B6AA07800FABA32 /* Main.storyboard */; };
@@ -62,13 +62,13 @@
 		4CDABFFE1B6A9F6100FABA32 /* ConditionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConditionsView.swift; sourceTree = "<group>"; };
 		4CDABFFF1B6A9F6100FABA32 /* Forecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 		4CDAC0001B6A9F6100FABA32 /* ForecastCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastCollectionViewCell.swift; sourceTree = "<group>"; };
-		4CDAC0011B6A9F6100FABA32 /* ForecastDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastDatasource.swift; sourceTree = "<group>"; };
+		4CDAC0011B6A9F6100FABA32 /* ForecastDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastDataSource.swift; sourceTree = "<group>"; };
 		4CDAC0021B6A9F6100FABA32 /* ForecastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
 		4CDAC0031B6A9F6100FABA32 /* ForecastViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastViewDelegate.swift; sourceTree = "<group>"; };
 		4CDAC0041B6A9F6100FABA32 /* ForecastViewDisplayable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastViewDisplayable.swift; sourceTree = "<group>"; };
 		4CDAC0051B6A9F6100FABA32 /* SimpleForecastCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleForecastCollectionViewCell.swift; sourceTree = "<group>"; };
 		4CDAC0061B6A9F6100FABA32 /* Temperature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
-		4CDAC0071B6A9F6100FABA32 /* WundergroundDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WundergroundDatasource.swift; sourceTree = "<group>"; };
+		4CDAC0071B6A9F6100FABA32 /* WundergroundDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WundergroundDataSource.swift; sourceTree = "<group>"; };
 		4CDAC01B1B6AA07800FABA32 /* ForecastViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForecastViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CDAC01E1B6AA07800FABA32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CDAC01F1B6AA07800FABA32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -159,7 +159,7 @@
 		4CDAC0141B6A9F7400FABA32 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				4CDAC0011B6A9F6100FABA32 /* ForecastDatasource.swift */,
+				4CDAC0011B6A9F6100FABA32 /* ForecastDataSource.swift */,
 				4CDAC0031B6A9F6100FABA32 /* ForecastViewDelegate.swift */,
 				4CDAC0041B6A9F6100FABA32 /* ForecastViewDisplayable.swift */,
 			);
@@ -179,7 +179,7 @@
 		4CDAC0161B6A9FB300FABA32 /* Datasources */ = {
 			isa = PBXGroup;
 			children = (
-				4CDAC0071B6A9F6100FABA32 /* WundergroundDatasource.swift */,
+				4CDAC0071B6A9F6100FABA32 /* WundergroundDataSource.swift */,
 			);
 			name = Datasources;
 			sourceTree = "<group>";
@@ -326,11 +326,11 @@
 				4CDAC0101B6A9F6100FABA32 /* SimpleForecastCollectionViewCell.swift in Sources */,
 				4CDAC0081B6A9F6100FABA32 /* Conditions.swift in Sources */,
 				4CDAC00F1B6A9F6100FABA32 /* ForecastViewDisplayable.swift in Sources */,
-				4CDAC00C1B6A9F6100FABA32 /* ForecastDatasource.swift in Sources */,
+				4CDAC00C1B6A9F6100FABA32 /* ForecastDataSource.swift in Sources */,
 				4CDAC00D1B6A9F6100FABA32 /* ForecastView.swift in Sources */,
 				4CDAC0111B6A9F6100FABA32 /* Temperature.swift in Sources */,
 				4CDAC00E1B6A9F6100FABA32 /* ForecastViewDelegate.swift in Sources */,
-				4CDAC0121B6A9F6100FABA32 /* WundergroundDatasource.swift in Sources */,
+				4CDAC0121B6A9F6100FABA32 /* WundergroundDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

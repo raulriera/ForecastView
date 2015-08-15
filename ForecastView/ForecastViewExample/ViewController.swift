@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         // Init the Forecast View
-        forecastView.datasource = WundergroundDatasource(apiKey: "YOUR-API-KEY-FROM-WUNDERGROUND.COM")
+        forecastView.dataSource = WundergroundDataSource(apiKey: "YOUR-API-KEY-FROM-WUNDERGROUND.COM")
         forecastView.coordinates = CLLocationCoordinate2DMake(10.162, -68.0077)
     }
     

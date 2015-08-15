@@ -39,14 +39,14 @@ import CoreLocation
     @IBInspectable public var duration: Double = 0.25
     /// Support to expand the Forecast View to display more than one weather conditions
     @IBInspectable public var expandable: Bool = true
-    /// An object that adopts the ForecastDatasource protocol is responsible for providing the data required by a forecast view.
-    public var datasource: ForecastDatasource?
+    /// An object that adopts the ForecastDataSource protocol is responsible for providing the data required by a forecast view.
+    public var dataSource: ForecastDataSource?
     /// The ForecastViewDelegate protocol defines methods that allow you to manage the selection of items in a forecast view and to perform actions on those items.
     public var delegate: ForecastViewDelegate?
     /// These coordinates with the datasource are used to gather the weather conditions information to display
     public var coordinates: CLLocationCoordinate2D = CLLocationCoordinate2DMake(0, 0) {
         didSet {
-            datasource?.forecastForCoordinates(coordinates) { [weak self] (data, error) in
+            dataSource?.forecastForCoordinates(coordinates) { [weak self] (data, error) in
                 if let data = data {
                     self?.items = data
                 }

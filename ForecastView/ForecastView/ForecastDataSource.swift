@@ -1,5 +1,5 @@
 //
-//  ForecastDatasource.swift
+//  ForecastDataSource.swift
 //  WeatherView
 //
 //  Created by Raul Riera on 29/07/2015.
@@ -12,7 +12,7 @@ import CoreLocation
 /**
 *  An object that adopts the ForecastDatasource protocol is responsible for providing the data required by a forecast view.
 */
-public protocol ForecastDatasource {
+public protocol ForecastDataSource {
     /**
     Asks the data source for the items in the specified coordinates. (required)
     
@@ -22,7 +22,7 @@ public protocol ForecastDatasource {
     func forecastForCoordinates(coordinates: CLLocationCoordinate2D, completion:(data: [Forecast]?, error: NSError?) -> Void)
 }
 
-extension ForecastDatasource {
+extension ForecastDataSource {
     
     /**
     Helper method to fetch data asynchronously. Creates an HTTP GET request for the specified URL, then calls a handler upon completion.

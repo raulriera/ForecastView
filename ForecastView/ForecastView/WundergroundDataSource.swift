@@ -1,5 +1,5 @@
 //
-//  WundergroundDatasource.swift
+//  WundergroundDataSource.swift
 //  WeatherView
 //
 //  Created by Raul Riera on 29/07/2015.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-public class WundergroundDatasource: ForecastDatasource {
+public class WundergroundDataSource: ForecastDataSource {
     
     var apiKey: String
     
