@@ -16,7 +16,6 @@ import CoreLocation
     private var state: ForecastViewState = .Collapsed {
         didSet {
             guard expandable else { return }
-            guard let collectionView = collectionView else { return }
             
             collectionView.reloadData()
             collectionView.layoutIfNeeded()

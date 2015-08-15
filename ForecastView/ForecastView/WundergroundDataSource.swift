@@ -64,10 +64,8 @@ public class WundergroundDataSource: ForecastDataSource {
                     
                     completion(data: items, error: error)
                     
-                    
                 } catch let error as NSError {
                     completion(data: .None, error: error)
-                    return
                 } catch {
                     fatalError()
                 }
