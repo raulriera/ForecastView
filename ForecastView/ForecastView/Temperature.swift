@@ -48,11 +48,11 @@ public struct Temperature {
     }
     
     /**
-    Creats an instance of the temperature value type.
+    Creates an instance of the temperature value type.
     
     - parameter celsius:	temperature reading in celsius
     - parameter fahrenheit:	temperature reading in fahrenheit
-    - parameter format:		temperature format to display to the user
+    - parameter format:		temperature format to display
     */
     init(celsius: Int, fahrenheit: Int, format: TemperatureFormat = .Celsius) {
         self.celsius = celsius
