@@ -39,17 +39,17 @@ import CoreLocation
     /// Support to expand the Forecast View to display more than one weather conditions
     @IBInspectable public var expandable: Bool = true
     /// An object that adopts the ForecastDataSource protocol is responsible for providing the data required by a forecast view.
-    public var dataSource: ForecastDataSource?
+    public var dataSource: ForecastDataSource? {
+        didSet {
+            reloadData()
+        }
+    }
     /// The ForecastViewDelegate protocol defines methods that allow you to manage the selection of items in a forecast view and to perform actions on those items.
     public var delegate: ForecastViewDelegate?
     /// These coordinates with the datasource are used to gather the weather conditions information to display
     public var coordinates: CLLocationCoordinate2D = CLLocationCoordinate2DMake(0, 0) {
         didSet {
-            dataSource?.forecastForCoordinates(coordinates) { [weak self] (data, error) in
-                if let data = data {
-                    self?.items = data
-                }
-            }
+            reloadData()
         }
     }
     
@@ -123,6 +123,14 @@ import CoreLocation
         let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[collectionView]-0-|", options: .AlignAllBaseline, metrics: nil, views: views)
         
         NSLayoutConstraint.activateConstraints(verticalConstraints + horizontalConstraints)
+    }
+    
+    private func reloadData() {
+        dataSource?.forecastForCoordinates(coordinates) { [weak self] (data, error) in
+            if let data = data {
+                self?.items = data
+            }
+        }
     }
     
     // MARK: Interface Builder
