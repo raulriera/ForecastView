@@ -21,4 +21,12 @@ public protocol ForecastViewDelegate {
     - returns: The width and height of the specified item.
     */
     func forecastView(forecastView: ForecastView, sizeForItemAtIndex index: Int) -> CGSize
+    
+    /**
+    Tells the delegate that the forecast was loaded with a given number of items.
+    
+    - parameter forecastView:	the view displaying the weather information
+    - parameter count:			the number of forecast items loaded
+    */
+    func forecastView(forecastView: ForecastView, didFinishLoadingForecastWithCount count: Int)
 }

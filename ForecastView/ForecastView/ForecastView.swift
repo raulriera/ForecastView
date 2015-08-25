@@ -30,6 +30,7 @@ import CoreLocation
         didSet {
             NSOperationQueue.mainQueue().addOperationWithBlock {
                 self.collectionView.reloadData()
+                self.delegate?.forecastView(self, didFinishLoadingForecastWithCount: self.items.count)
             }
         }
     }
