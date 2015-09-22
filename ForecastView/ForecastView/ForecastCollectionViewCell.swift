@@ -28,7 +28,14 @@ class ForecastCollectionViewCell: UICollectionViewCell, ForecastViewDisplayable 
     }()
     
     lazy private var conditionsView: ConditionsView = {
-        let view = ConditionsView(frame: CGRectZero, font: .systemFontOfSize(20, weight: UIFontWeightThin))
+        let font: UIFont
+        
+        if #available(iOS 8.2, *) {
+            font = UIFont.systemFontOfSize(20, weight: UIFontWeightThin)
+        } else {
+            font = UIFont.systemFontOfSize(20)
+        }
+        let view = ConditionsView(frame: CGRectZero, font: font)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

@@ -140,7 +140,11 @@ import CoreLocation
         backgroundColor = UIColor(red: 236/255, green: 236/255, blue: 236/255, alpha: 1)
         
         let debugLabel = UILabel(frame: frame)
-        debugLabel.font = UIFont.systemFontOfSize(20, weight: UIFontWeightBlack)
+        if #available(iOS 8.2, *) {
+            debugLabel.font = UIFont.systemFontOfSize(20, weight: UIFontWeightBlack)
+        } else {
+            debugLabel.font = UIFont.systemFontOfSize(20)
+        }
         debugLabel.textColor = UIColor(red: 191/255, green: 191/255, blue: 191/255, alpha: 1)
         debugLabel.numberOfLines = 0
         debugLabel.lineBreakMode = .ByWordWrapping

@@ -26,7 +26,12 @@ class SimpleForecastCollectionViewCell: UICollectionViewCell, ForecastViewDispla
             return
         }
         
-        conditionsView = ConditionsView(frame: frame, font: UIFont.systemFontOfSize(32, weight: UIFontWeightThin))
+        if #available(iOS 8.2, *) {
+            conditionsView = ConditionsView(frame: frame, font: UIFont.systemFontOfSize(32, weight: UIFontWeightThin))
+        } else {
+            conditionsView = ConditionsView(frame: frame, font: UIFont.systemFontOfSize(32))
+        }
+        
         conditionsView?.translatesAutoresizingMaskIntoConstraints = false
         
         contentView.addSubview(conditionsView!)
